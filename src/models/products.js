@@ -77,7 +77,7 @@ const insertImagesProduct = (dataImages) => {
 const getImagesProductIdInsert = () => {
   return new Promise((resolve, reject) => {
     connection.query(
-      "SELECT image_id FROM `images` order BY id DESC LIMIT 1",
+      "SELECT image_id FROM `images` order BY image_id DESC LIMIT 1",
 
       (error, result) => {
         if (!error) {

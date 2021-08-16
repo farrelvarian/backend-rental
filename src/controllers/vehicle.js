@@ -137,7 +137,7 @@ const insertProduct = (req, res, next) => {
 
         productModel.insertImagesProduct(dataImages).then(() => {
             productModel.getImagesProductIdInsert().then((result) => {
-                const imageId = result[0].id;
+                const imageId = result[0].image_id;
                 const { name, brand, price, description, category_id, category } =
                 req.body;
                 const data = {
