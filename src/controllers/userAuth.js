@@ -29,7 +29,6 @@ const register = async(req, res, next) => {
               dateOfBirth: dateOfBirth,
               address: address,
               role: role,
-              store_name: store_name,
               status: "UNACTIVED",
               createdAt: new Date(),
               updatedAt: new Date(),
@@ -65,14 +64,11 @@ const login = async(req, res, next) => {
     const status = user.status;
     let roleUser
     switch (role) {
-        case "CUSTOMMER":
+        case "member":
             roleUser = "1";
             break;
-        case "SELLER":
+        case "admin":
             roleUser = "2";
-            break;
-        case "ADMIN":
-            roleUser = "3";
     }
     if (status == "ACTIVED") {
         bcrypt.compare(password, user.password, function(err, resCompare) {

@@ -85,7 +85,7 @@ const sendEmail = (toEmail, toName, token) => {
         })
         .catch((error) => {
             console.log(error);
-            helpers.response(res, "Not found id product", null, 404);
+            helpers.response(res, "Not found id Vehicle", null, 404);
         });
 };
 

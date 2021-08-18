@@ -18,7 +18,7 @@ const paginationCategory = () => {
 const getAllCategory = (field, sort, limit, search) => {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM categories INNER JOIN products ON categories.category_id=products.category_id ${search} ORDER BY categories.${field} ${sort} LIMIT ${limit}`,
+      `SELECT * FROM categories INNER JOIN Vehicles ON categories.category_id=Vehicles.category_id ${search} ORDER BY categories.${field} ${sort} LIMIT ${limit}`,
       (error, result) => {
         if (!error) {
           resolve(result);

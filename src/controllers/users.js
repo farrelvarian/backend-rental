@@ -54,8 +54,6 @@ const insertUser = (req, res, next) => {
       gender,
       dateOfBirth,
       address,
-      store_name,
-      store_description,
     } = req.body;
     const data = {
       id: uuidv4(),
@@ -67,10 +65,7 @@ const insertUser = (req, res, next) => {
       gender: gender,
       dateOfBirth: dateOfBirth,
       address: address,
-      store_name: store_name,
-      store_description: store_description,
       createdAt: new Date(),
-      updatedAt: new Date(),
     };
 
     userModel
@@ -115,9 +110,7 @@ const updateUser = (req, res) => {
         phone,
         gender,
         dateOfBirth,
-        address,
-        store_name,
-        store_description,
+        address
       } = req.body;
       if (imageUserInput == "") {
         avatar = oldImageUser;
@@ -133,8 +126,6 @@ const updateUser = (req, res) => {
         gender: gender,
         dateOfBirth: dateOfBirth,
         address: address,
-        store_name: store_name,
-        store_description: store_description,
         updatedAt: new Date(),
       };
       userModel
@@ -146,7 +137,7 @@ const updateUser = (req, res) => {
           } else {
             fs.unlink(`${dirPath}/${oldImageUser.substr(28)}`, (err) => {
               if (err) {
-                console.log("Error unlink image product!" + err);
+                console.log("Error unlink image vehicle!" + err);
               }
             });
           }
@@ -156,7 +147,7 @@ const updateUser = (req, res) => {
           helpers.response(res, "Not found id user", null, 404);
           fs.unlink(`${dirPath}/${imageUserInput}`, (err) => {
             if (err) {
-              console.log("Error unlink image product!" + err);
+              console.log("Error unlink image vehicle!" + err);
             }
           });
         });
