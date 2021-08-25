@@ -70,7 +70,7 @@ const getAllVehicle = (req, res, next) => {
 };
 
 const getVehicle = (req, res, next) => {
-    // if (req.role == 1 || req.role == 2 || req.role == 3) {
+
         const id = req.params.id;
         vehicleModel
             .getVehicle(id)
@@ -83,9 +83,7 @@ const getVehicle = (req, res, next) => {
                 const err = new createError.InternalServerError();
                 next(err);
             });
-    // } else {
-    //     helpers.response(res, "Not Autorized", null, 404);
-    // }
+
 };
 
 const getVehicleByCategory = (req, res, next) => {
@@ -106,7 +104,7 @@ const getVehicleByCategory = (req, res, next) => {
 };
 
 const insertVehicle = (req, res, next) => {
-    // if (req.role == 2) {
+ 
         const urlImages = [];
         const images = [];
         req.files.forEach((element) => {
@@ -161,12 +159,10 @@ const insertVehicle = (req, res, next) => {
             });
         });
        });
-    // } else {
-    //     helpers.response(res, "Not Autorized", null, 404);
-    // }
+
 };
 const updateVehicle = (req, res) => {
-//   if (req.role == 2) {
+
     const id = req.params.id;
 
     const imageArr = [];
@@ -251,9 +247,7 @@ const updateVehicle = (req, res) => {
         });
       });
     });
-//   } else {
-//     helpers.response(res, "Not Autorized", null, 404);
-//   }
+
 };
 const deleteVehicle = (req, res) => {
 //   if (req.role == 2) {
@@ -273,9 +267,7 @@ const deleteVehicle = (req, res) => {
           });
         }
       });
-//   } else {
-//     helpers.response(res, "Not Autorized", null, 404);
-//   }
+
 };
 
 module.exports = {

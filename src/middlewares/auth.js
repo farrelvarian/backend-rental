@@ -1,15 +1,17 @@
 const jwt = require("jsonwebtoken");
+const helpers = require("../helpers/helpers");
 
 const verifyAccess = (req, res, next) => {
-    const token = req.headers.authorization;
+   const token = req.cookies.token;
+    // console.log(token);
     if (!token) {
         const error = new Error("server need token");
         error.code = 401;
         return next(error);
     }
-    const result = token.split(" ")[1];
-    console.log(result);
-    jwt.verify(result, process.env.SECRET_KEY, function(err, decoded) {
+    // const result = token.split(" ")[1];
+    // console.log(result);
+    jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {
         if (err) {
             if (err.name === "TokenExpiredError") {
                 const error = new Error("token expired");
@@ -30,8 +32,26 @@ const verifyAccess = (req, res, next) => {
     });
 };
 
+const autorizedMember= (req, res, next) => {
+    const role = req.role;
+    if (role === "member") {
+      return next();
+    }
+    return helpers.response(res, "Forbidden Access",null, 403);
+  }
+
+  const autorizedAdmin = (req, res, next) => {
+    const role = req.role;
+  
+    if (role === "admin") {
+      return next();
+    }
+    return helpers.response(res, "Forbidden Access",null, 403);
+  };
+
 
 module.exports = {
-    verifyAccess,
-
+  verifyAccess,
+  autorizedMember,
+  autorizedAdmin,
 };

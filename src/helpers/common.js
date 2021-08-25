@@ -11,11 +11,11 @@ const sendEmail = (toEmail, toName, token) => {
         },
     });
     transporter
-        .sendMail({
-            from: '"Blanja Fashion Culture" <blanjafashionculture@gmail.com>', // sender address
-            to: `${toEmail}`, // list of receivers
-            subject: `Activation for ${toName}`, // Subject line
-            html: `<!DOCTYPE html>
+      .sendMail({
+        from: '"Circle-Connection Vehicle Rental" <circle.connect.0@gmail.com>', // sender address
+        to: `${toEmail}`, // list of receivers
+        subject: `Activation for ${toName}`, // Subject line
+        html: `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -56,9 +56,9 @@ const sendEmail = (toEmail, toName, token) => {
             border-radius: 15px;
         }
         
-        .blanja {
+        .circle {
             text-align: center;
-            color: #db3d23;
+            color: #FB8F1D;
             font-weight: 700;
             font-size: 24 px;
             margin-left: 10 px;
@@ -68,25 +68,25 @@ const sendEmail = (toEmail, toName, token) => {
 
 <body>
     <div class=container>
-        <h1 class=blanja> Blanja
+        <h1 class=circle> Circle-Connection
         </h1>
         <h2> Dear ${toName}
         </h2>
-        <h1> One Step Closer To Be Part of Blanja Fashion Culture!
+        <h1> One Step Closer To Be Part of Circle-Connection Vehicle Rental!
         </h1>
         <h2> just <a href=${process.env.BASE_URL}/activation/${token}> Click Here! </a>for activating your account</h2>
     </div>
 </body>
 
 </html>`, // html body
-        })
-        .then(() => {
-            helpers.response(res, "Success send email data", toEmail, 200);
-        })
-        .catch((error) => {
-            console.log(error);
-            helpers.response(res, "Not found id Vehicle", null, 404);
-        });
+      })
+      .then(() => {
+        helpers.response(res, "Success send email data", toEmail, 200);
+      })
+      .catch((error) => {
+        console.log(error);
+        helpers.response(res, "Not found id Vehicle", null, 404);
+      });
 };
 
 module.exports = {

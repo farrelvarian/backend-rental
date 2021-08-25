@@ -9,6 +9,6 @@ router
     .get("/:id", auth.verifyAccess, userController.getUser)
     .post("/", auth.verifyAccess, userController.insertUser)
     .put("/:id", auth.verifyAccess, upload.single("image"),userController.updateUser)
-    .delete("/:id", auth.verifyAccess, userController.deleteUser);
+    .delete("/:id", auth.verifyAccess,auth.autorizedAdmin, userController.deleteUser);
 
 module.exports = router

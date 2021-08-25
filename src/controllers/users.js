@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 
 
 const getAllUser = (req, res, next) => {
-  if (req.role == 3) {
+
     userModel
       .getAllUser()
       .then((result) => {
@@ -18,13 +18,11 @@ const getAllUser = (req, res, next) => {
         console.log(error);
         helpers.response(res, "Not found user", null, 404);
       });
-  } else {
-    helpers.response(res, "Not Autorized", null, 404);
-  }
+
 };
 
 const getUser = (req, res, next) => {
-  if (req.role == 1 || req.role == 2 || req.role == 3) {
+ 
     const id = req.params.id;
     userModel
       .getUser(id)
@@ -37,13 +35,11 @@ const getUser = (req, res, next) => {
         const err = new createError.InternalServerError();
         next(err);
       });
-  } else {
-    helpers.response(res, "Not Autorized", null, 404);
-  }
+
 };
 
 const insertUser = (req, res, next) => {
-  if (req.role == 3) {
+ 
     const fileName = req.file.filename;
     const urlFileName = `${process.env.BASE_URL}/files/${req.file.filename}`;
     const {
@@ -82,13 +78,11 @@ const insertUser = (req, res, next) => {
           }
         });
       });
-  } else {
-    helpers.response(res, "Not Autorized", null, 404);
-  }
+
 };
 
 const updateUser = (req, res) => {
-  if (req.role == 3 || req.role == 2 || req.role == 1) {
+
     const id = req.params.id;
     let avatar = "";
     let imageUserInput = "";
@@ -152,13 +146,11 @@ const updateUser = (req, res) => {
           });
         });
     });
-  } else {
-    helpers.response(res, "Not Autorized", null, 404);
-  }
+
 };
 
 const deleteUser = (req, res) => {
-  if (req.role == 3) {
+
     const id = req.params.id;
     userModel
       .deleteUser(id)
@@ -169,9 +161,7 @@ const deleteUser = (req, res) => {
         console.log(err);
         helpers.response(res, "Not found id user", null, 404);
       });
-  } else {
-    helpers.response(res, "Not Autorized", null, 404);
-  }
+
 };
 
 module.exports = {

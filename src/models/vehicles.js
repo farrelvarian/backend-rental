@@ -1,5 +1,6 @@
 const connection = require("../configs/db");
 
+
 const paginationVehicle = (numPerPage, page, searchPage) => {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -52,7 +53,7 @@ const getVehicle = (id) => {
 const getVehicleByCategory = (category_id, field, sort) => {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM vehicles INNER JOIN images ON vehicles.image_id=images.image_id WHERE vehicles.category_id = ? ORDER BY ${field} ${sort}`,
+      `SELECT * FROM vehicles  INNER JOIN images ON vehicles.image_id=images.image_id INNER JOIN categories ON vehicles.category_id = categories.category_id INNER JOIN locations ON vehicles.location_id = locations.location_id WHERE vehicles.category_id = ? ORDER BY ${field} ${sort} LIMIT 5`,
       category_id,
       (error, result) => {
         if (!error) {
