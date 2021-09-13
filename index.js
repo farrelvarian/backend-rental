@@ -9,7 +9,7 @@ const locationRouter = require("./src/routes/locations");
 const reservationRouter = require("./src/routes/reservations");
 const userAuthRouter = require("./src/routes/userAuth");
 const morgan = require("morgan");
-const port = process.env.DB_PORT || 3500;
+const PORT = process.env.PORT || 3500;
 const cors = require("cors");
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
@@ -61,8 +61,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
 });
 
 module.exports = app;
