@@ -1,14 +1,14 @@
 const nodemailer = require("nodemailer");
-const emailTemplate = require("./emailTemplate.js");
+
 
 const sendEmail = (toEmail, toName, token) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-            user: process.env.BLANJA_EMAIL, // generated ethereal user
-            pass: process.env.BLANJA_PASS, // generated ethereal password
-        },
+      service: "Gmail",
+      auth: {
+        user: process.env.RENTAL_EMAIL, // generated ethereal user
+        pass: process.env.RENTAL_PASS, // generated ethereal password
+      },
     });
     transporter
       .sendMail({

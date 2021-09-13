@@ -21,6 +21,18 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 const optionCors = { credentials: true, origin:`${process.env.FRONT_URL}` };
 app.use(cors(optionCors));
+app.use((_, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  ); // If needed
+  res.header(
+    "Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  ); // If needed
+  res.header("Access-Control-Allow-Credentials", true); // If needed
+  next();
+});
 app.use(cookieParser());
 
 app.use("/vehicles", vehicleRouter);
@@ -30,6 +42,12 @@ app.use("/locations", locationRouter);
 app.use("/reservations", reservationRouter);
 app.use("/", userAuthRouter);
 app.use("/files", express.static("./uploads"));
+
+
+
+
+app.use("/file", express.static("./uploads"));
+//  catch error and forward to error handler
 
 app.use("*", (req, res, next) => {
   const error = new createError.NotFound();
@@ -46,3 +64,5 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
+
+module.exports = app;

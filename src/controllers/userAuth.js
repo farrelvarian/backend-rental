@@ -58,9 +58,10 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   const { email, password } = req.body;
   const result = await userModels.findUser(email);
+  if(result.length===0){return helpers.response(res, "account registered yet", null, 401);}
   const user = result[0];
+  console.log(user);
   const status = user.status;
-
   if (status == "ACTIVED") {
     bcrypt.compare(password, user.password, function (err, resCompare) {
       if (!resCompare) {
