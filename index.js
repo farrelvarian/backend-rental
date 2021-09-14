@@ -19,8 +19,8 @@ const cookieParser = require("cookie-parser");
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
-const optionCors = { credentials: true, origin:`${process.env.FRONT_URL}` };
-app.use(cors(optionCors));
+// const optionCors = { credentials: true, origin:`${process.env.FRONT_URL}` };
+// app.use(cors(optionCors));
 app.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", true);
   res.header(
