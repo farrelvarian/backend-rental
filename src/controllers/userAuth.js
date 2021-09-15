@@ -78,37 +78,37 @@ const login = async (req, res, next) => {
           // console.log(process.env.SECRET_KEY);
           delete user.password;
           user.token = token;
-          res.cookie("token", token, {
-            httpOnly: true,
-            max: 1000 * 60 *60* 24,
-            secure: true,
-            path: "/",
-            sameSite: "strict",
-          });
-            res.cookie("user_id", user.id, {
-              max: 1000 * 60 * 60 * 24,
-              // secure: true,
-              path: "/",
-              // sameSite: "strict",
-            });
-              res.cookie("user_role", user.role, {
-                max: 1000 * 60 * 60 * 24,
-                // secure: true,
-                path: "/",
-                // sameSite: "strict",
-              });
-              res.cookie("user_image", user.image, {
-                max: 1000 * 60 * 60 * 24,
-                // secure: true,
-                path: "/",
-                // sameSite: "strict",
-              });
-               res.cookie("user_isAuth", true, {
-                 max: 1000 * 60 * 60 * 24,
-                 // secure: true,
-                 path: "/",
-                 // sameSite: "strict",
-               });
+          // res.cookie("token", token, {
+          //   httpOnly: true,
+          //   max: 1000 * 60 *60* 24,
+          //   secure: true,
+          //   path: "/",
+          //   sameSite: "strict",
+          // });
+          //   res.cookie("user_id", user.id, {
+          //     max: 1000 * 60 * 60 * 24,
+          //     // secure: true,
+          //     path: "/",
+          //     // sameSite: "strict",
+          //   });
+          //     res.cookie("user_role", user.role, {
+          //       max: 1000 * 60 * 60 * 24,
+          //       // secure: true,
+          //       path: "/",
+          //       // sameSite: "strict",
+          //     });
+          //     res.cookie("user_image", user.image, {
+          //       max: 1000 * 60 * 60 * 24,
+          //       // secure: true,
+          //       path: "/",
+          //       // sameSite: "strict",
+          //     });
+          //      res.cookie("user_isAuth", true, {
+          //        max: 1000 * 60 * 60 * 24,
+          //        // secure: true,
+          //        path: "/",
+          //        // sameSite: "strict",
+          //      });
           helpers.response(res, "success login", user, 200);
         }
       );
