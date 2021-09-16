@@ -1,7 +1,7 @@
-<h1 align="center">ExpressJS - #backend-E-Commerce RESTfull API</h1>
+<h1 align="center">ExpressJS - #backend-Vehicle-Rental RESTfull API</h1>
 
 
-E-commerce website focus on fashion that brings together sellers and customers. It has search, sort, product detail and my bag features for customers as well as add, update and delete products for sellers. Built using ReactJS, ExpressJS and MySQL.
+A vehicle rental website that brings together renters and vehicle owners. It has search, sort, vehicle detail and reservation features for tenants as well as add, update and delete vehicles for owners. Built using NextJS, ExpressJS and MySQL.
 
 <p align='center'>
    ·
